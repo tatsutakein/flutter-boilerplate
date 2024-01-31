@@ -1,0 +1,62 @@
+name: "Deploy to GitHub Pages"
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      preview:
+        required: true
+        type: boolean
+    secrets:
+      gh-token:
+        required: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: '${{ inputs.environment }}'
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      contents: read
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    runs-on: ubuntu-22.04
+    steps:
+      # https://github.com/marketplace/actions/checkout
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+
+      # https://github.com/marketplace/actions/mise-action
+      - name: mise action
+        uses: jdx/mise-action@3bc85396a273ed82bba5e53a15174bbf9dba095c # v2.0.2
+
+      # https://github.com/marketplace/actions/melos-action
+      - name: Melos action
+        uses: bluefireteam/melos-action@63916098bc0ef1e403907e419b61b284108d755e # v3
+
+      # https://github.com/marketplace/actions/configure-github-pages
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d # v4.0.0
+
+      - name: Build
+        run: flutter build web --web-renderer html
+        working-directory: ./catalog
+
+      # https://github.com/marketplace/actions/upload-github-pages-artifact
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@0252fc4ba7626f0298f0cf00902a25c6afc77fa8 # v3.0.0
+        with:
+          name: ${{ inputs.environment }}
+          path: './catalog/build/web'
+
+      # https://github.com/marketplace/actions/deploy-github-pages-site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@87c3283f01cd6fe19a0ab93a23b2f6fcba5a8e42 # v4.0.3
+        with:
+          token: ${{ secrets.gh-token }}
+          artifact_name: ${{ inputs.environment }}
+          preview: ${{ inputs.preview }}
