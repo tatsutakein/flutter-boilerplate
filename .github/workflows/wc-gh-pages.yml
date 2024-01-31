@@ -14,15 +14,10 @@ on:
         required: true
 
 jobs:
-  build-and-deploy:
-    environment:
-      name: '${{ inputs.environment }}'
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       contents: read
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
     runs-on: ubuntu-22.04
     steps:
       # https://github.com/marketplace/actions/checkout
@@ -42,7 +37,7 @@ jobs:
         uses: actions/configure-pages@1f0c5cde4bc74cd7e1254d0cb4de8d49e9068c7d # v4.0.0
 
       - name: Build
-        run: flutter build web --web-renderer html
+        run: flutter build web --web-renderer html --release
         working-directory: ./catalog
 
       # https://github.com/marketplace/actions/upload-github-pages-artifact
@@ -52,6 +47,18 @@ jobs:
           name: ${{ inputs.environment }}
           path: './catalog/build/web'
 
+  # Deployment job
+  deploy:
+    environment:
+      name: '${{ inputs.environment }}'
+      url: ${{ steps.deployment.outputs.page_url }}
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
       # https://github.com/marketplace/actions/deploy-github-pages-site
       - name: Deploy to GitHub Pages
         id: deployment
