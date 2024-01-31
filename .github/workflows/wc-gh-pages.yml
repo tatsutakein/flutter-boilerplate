@@ -14,7 +14,7 @@ on:
         required: true
 
 jobs:
-  build-and-deploy:
+  build:
     environment:
       name: '${{ inputs.environment }}'
       url: ${{ steps.deployment.outputs.page_url }}
@@ -52,6 +52,14 @@ jobs:
           name: ${{ inputs.environment }}
           path: './catalog/build/web'
 
+  # Deployment job
+  deploy:
+    environment:
+      name: '${{ inputs.environment }}'
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
       # https://github.com/marketplace/actions/deploy-github-pages-site
       - name: Deploy to GitHub Pages
         id: deployment
