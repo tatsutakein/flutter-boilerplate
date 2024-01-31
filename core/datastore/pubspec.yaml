@@ -1,0 +1,19 @@
+name: core_datastore
+description: This package provides local preferences operations.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: 3.2.6
+
+dependencies:
+  core_common:
+    path: ../common
+  core_model:
+    path: ../model
+
+dev_dependencies:
+  core_testing:
+    path: ../testing
+  test: 1.25.2
+  yumemi_lints: 1.5.0

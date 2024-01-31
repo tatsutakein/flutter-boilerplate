@@ -1,0 +1,37 @@
+name: app
+description: "Boilerplate App"
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: 3.2.6
+
+dependencies:
+  core_common:
+    # noinspection DartPathPackageReference
+    path: ../core/common
+  core_database:
+    # noinspection DartPathPackageReference
+    path: ../core/database
+  core_designsystem:
+    # noinspection DartPathPackageReference
+    path: ../core/designsystem
+  core_model:
+    # noinspection DartPathPackageReference
+    path: ../core/model
+  cupertino_icons: 1.0.6
+  device_preview: 1.1.0
+  dynamic_color: 1.6.9
+  flutter:
+    sdk: flutter
+  flutter_riverpod: 2.4.9
+  isar_flutter_libs: 4.0.0-dev.14
+  package_info_plus: 5.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  yumemi_lints: 1.5.0
+
+flutter:
+  uses-material-design: true

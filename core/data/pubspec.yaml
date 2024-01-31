@@ -1,0 +1,25 @@
+name: core_data
+description: This package provides the repository layer.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: 3.2.6
+
+dependencies:
+  core_common:
+    path: ../common
+  core_database:
+    path: ../database
+  core_datastore:
+    path: ../datastore
+  core_model:
+    path: ../model
+  core_network:
+    path: ../network
+
+dev_dependencies:
+  core_testing:
+    path: ../testing
+  test: 1.25.2
+  yumemi_lints: 1.5.0

@@ -1,0 +1,20 @@
+name: core_domain
+description: This package provides use cases and domain models.
+publish_to: "none"
+
+environment:
+  sdk: 3.2.6
+
+dependencies:
+  core_common:
+    path: ../common
+  core_data:
+    path: ../data
+  core_model:
+    path: ../model
+
+dev_dependencies:
+  core_testing:
+    path: ../testing
+  test: 1.25.2
+  yumemi_lints: 1.5.0

@@ -1,0 +1,11 @@
+name: core_common
+description: This package provides convenience functions and other functions commonly used in packages.
+version: 1.0.0
+publish_to: "none"
+
+environment:
+  sdk: 3.2.6
+
+dev_dependencies:
+  test: 1.25.2
+  yumemi_lints: 1.5.0

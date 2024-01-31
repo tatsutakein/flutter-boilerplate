@@ -1,0 +1,118 @@
+# When you use this template, you must change this name field.
+name: boilerplate
+
+packages:
+  - app
+  - backend
+  - catalog
+  - core/*
+  - feature/*
+
+ide:
+  intellij:
+    enabled: true
+
+versions:
+  - &isar 4.0.0-dev.14
+  - &riverpod 2.4.9
+
+command:
+  bootstrap:
+    environment:
+      sdk: 3.2.6
+      flutter: 3.16.9
+    dependencies:
+      flutter_riverpod: *riverpod
+      freezed_annotation: 2.4.1
+      hooks_riverpod: *riverpod
+      isar: *isar
+      isar_flutter_libs: *isar
+      riverpod: *riverpod
+      riverpod_annotation: 2.3.3
+    dev_dependencies:
+      build_runner: 2.4.8
+      freezed: 2.4.6
+      test: 1.25.2
+      yumemi_lints: 1.5.0
+      riverpod_generator: 2.3.9
+      riverpod_lint: 2.3.7
+
+scripts:
+  # analyze
+  analyze:
+    run: melos run analyze:dart --no-select && melos run analyze:flutter --no-select
+    description: Run analyze.
+  analyze:dart:
+    exec: dart analyze
+    description: Run analyze.
+    packageFilters:
+      flutter: false
+      dirExists: lib
+  analyze:flutter:
+    exec: flutter analyze
+    description: Run analyze.
+    packageFilters:
+      flutter: true
+      dirExists: lib
+
+  gen:code:
+    run: dart pub run build_runner build --delete-conflicting-outputs
+    exec:
+      concurrency: 1
+    description: Run build_runner.
+    packageFilters:
+      dependsOn: "build_runner"
+  gen:l10n:
+    run: flutter gen-l10n
+    exec:
+      concurrency: 1
+    description: Generate l10n.
+    packageFilters:
+      flutter: true
+      fileExists: "l10n.yaml"
+  fix:
+    exec: dart fix --apply lib
+    description: Run dart fix.
+    packageFilters:
+      flutter: true
+      dirExists: lib
+  fix:check:
+    exec: dart fix --dry-run lib
+    description: Check dart fix.
+    packageFilters:
+      flutter: true
+      dirExists: lib
+  format:
+    exec: dart format lib
+    description: Run format.
+    packageFilters:
+      flutter: true
+      dirExists: lib
+  format:check:
+    exec: dart format lib --output=none --set-exit-if-changed
+    description: Check format.
+    packageFilters:
+      flutter: true
+      dirExists: lib
+
+  test:
+    run: melos run test:dart --no-select && melos run test:flutter --no-select
+    description: Run flutter test.
+  test:dart:
+    run: dart test
+    exec:
+      concurrency: 10
+      failFast: true
+    description: Run Dart test.
+    packageFilters:
+      flutter: false
+      dirExists: test
+  test:flutter:
+    run: flutter test --coverage
+    exec:
+      concurrency: 10
+      failFast: true
+    description: Run flutter test.
+    packageFilters:
+      flutter: true
+      dirExists: test

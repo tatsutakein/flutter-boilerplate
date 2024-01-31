@@ -1,0 +1,8 @@
+# When you use this template, you must change this name field.
+name: boilerplate
+
+environment:
+  sdk: 3.2.6
+dev_dependencies:
+  melos: 4.0.0
+  yumemi_lints: 1.5.0
