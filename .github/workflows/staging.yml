@@ -1,0 +1,23 @@
+name: "Deploy to GitHub Pages on merge"
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: staging-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-preview:
+    uses: ./.github/workflows/wc-gh-pages.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    with:
+      environment: 'staging'
+      preview: false
+    secrets:
+      gh-token: ${{ secrets.GITHUB_TOKEN }}

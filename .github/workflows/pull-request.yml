@@ -1,0 +1,23 @@
+name: "Deploy to GitHub Pages on PR"
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: pr-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-preview:
+    uses: ./.github/workflows/wc-gh-pages.yml
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    with:
+      environment: 'development'
+      preview: true
+    secrets:
+      gh-token: ${{ secrets.GITHUB_TOKEN }}
