@@ -30,7 +30,7 @@ jobs:
 
       # https://github.com/marketplace/actions/melos-action
       - name: Melos action
-        uses: bluefireteam/melos-action@63916098bc0ef1e403907e419b61b284108d755e # v3
+        uses: bluefireteam/melos-action@cf344238f6027b5d5f86d730b9e69483672f353e # v3
 
       # https://github.com/marketplace/actions/configure-github-pages
       - name: Configure GitHub Pages
