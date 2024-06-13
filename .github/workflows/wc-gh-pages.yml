@@ -26,7 +26,7 @@ jobs:
 
       # https://github.com/marketplace/actions/mise-action
       - name: mise action
-        uses: jdx/mise-action@3e282fcd55c8de21f232397e9fb876cd33e612f1 # v2.0.3
+        uses: jdx/mise-action@d6e32c1796099e0f1f3ac741c220a8b7eae9e5dd # v2.0.6
 
       # https://github.com/marketplace/actions/melos-action
       - name: Melos action
