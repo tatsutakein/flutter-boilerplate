@@ -10,32 +10,7 @@ packages:
 
 ide:
   intellij:
-    enabled: true
-
-versions:
-  - &isar 4.0.0-dev.14
-  - &riverpod 2.4.9
-
-command:
-  bootstrap:
-    environment:
-      sdk: 3.2.6
-      flutter: 3.16.9
-    dependencies:
-      flutter_riverpod: *riverpod
-      freezed_annotation: 2.4.1
-      hooks_riverpod: *riverpod
-      isar: *isar
-      isar_flutter_libs: *isar
-      riverpod: *riverpod
-      riverpod_annotation: 2.3.3
-    dev_dependencies:
-      build_runner: 2.4.8
-      freezed: 2.4.6
-      test: 1.25.2
-      yumemi_lints: 1.5.0
-      riverpod_generator: 2.3.9
-      riverpod_lint: 2.3.7
+    enabled: false
 
 scripts:
   # analyze
