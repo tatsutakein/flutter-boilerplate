@@ -2,20 +2,12 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
+    "group:allNonMajor",
     ":automergeMinor",
     ":prHourlyLimitNone",
     ":timezone(Asia/Tokyo)",
   ],
-  "commitMessagePrefix": ":wrench:",
   "dependencyDashboard": false,
-  "enabledManagers": [
-    "asdf",
-    "pub",
-    "gradle",
-    "cocoapods",
-    "github-actions",
-    "gradle-wrapper",
-  ],
   "labels": [
     "dependencies"
   ],
@@ -23,11 +15,19 @@
   "rangeStrategy": "pin",
   "packageRules": [
     {
-      "groupName": "flutter-lint",
+      "matchManagers": [
+        "github-actions",
+      ],
+      "labels": [
+        "dependencies",
+        "ignore for release",
+      ]
+    },
+    {
+      "groupName": "flutter",
       "matchPackageNames": [
         "dart",
         "flutter",
-        "yumemi_lints",
       ],
     },
     {
@@ -37,6 +37,29 @@
         "hooks_riverpod",
         "riverpod",
       ],
+      "matchPackagePrefixes": [
+        "riverpod_",
+      ]
     },
+    {
+      "groupName": "isar",
+      "matchPackageNames": [
+        "isar",
+        "isar_flutter_libs",
+      ],
+    },
+    {
+      "groupName": "firebase",
+      "matchPackagePrefixes": [
+        "firebase_",
+      ]
+    },
+    {
+      "groupName": "widgetbook",
+      "matchPackageNames": [
+        "widgetbook",
+        "widgetbook_generator",
+      ]
+    }
   ]
 }
