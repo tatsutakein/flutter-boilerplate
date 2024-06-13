@@ -11,7 +11,7 @@ dependencies:
     # noinspection DartPathPackageReference
     path: ../core/designsystem
   cupertino_icons: 1.0.8
-  dynamic_color: 1.6.9
+  dynamic_color: 1.7.0
   flutter:
     sdk: flutter
   widgetbook: 3.7.1
