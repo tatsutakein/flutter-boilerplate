@@ -162,7 +162,7 @@ packages:
     source: hosted
     version: "3.1.1"
   core_common:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "../core/common"
       relative: true
@@ -624,4 +624,4 @@ packages:
     version: "1.7.0"
 sdks:
   dart: "3.4.3"
-  flutter: ">=3.22.2"
+  flutter: ">=3.18.0-18.0.pre.54"
