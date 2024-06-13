@@ -4,8 +4,8 @@ version: 1.0.0
 publish_to: "none"
 
 environment:
-  sdk: 3.4.3
+  sdk: 3.4.4
 
 dev_dependencies:
   test: 1.25.3
-  yumemi_lints: 1.6.0
+  yumemi_lints: 1.7.0

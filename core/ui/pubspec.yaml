@@ -4,7 +4,7 @@ version: 1.0.0
 publish_to: "none"
 
 environment:
-  sdk: 3.4.3
+  sdk: 3.4.4
   flutter: 3.22.2
 
 dependencies:
@@ -22,6 +22,6 @@ dev_dependencies:
     path: ../testing
   flutter_test:
     sdk: flutter
-  yumemi_lints: 1.6.0
+  yumemi_lints: 1.7.0
 
 flutter:

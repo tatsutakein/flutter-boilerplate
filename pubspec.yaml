@@ -2,7 +2,7 @@
 name: boilerplate
 
 environment:
-  sdk: 3.4.3
+  sdk: 3.4.4
 dev_dependencies:
   melos: 4.1.0
-  yumemi_lints: 1.6.0
+  yumemi_lints: 1.7.0
