@@ -20,7 +20,7 @@ dependencies:
     # noinspection DartPathPackageReference
     path: ../core/model
   cupertino_icons: 1.0.6
-  device_preview: 1.1.0
+  device_preview: 1.2.0
   dynamic_color: 1.6.9
   flutter:
     sdk: flutter
